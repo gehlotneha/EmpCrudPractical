@@ -31,10 +31,7 @@ namespace EmpCrudPractical.Controllers
                     ModelState.Clear();
                     ViewBag.SuccessMessage = "Registration Successfull !";
                 }
-                else
-                {
-                    ViewBag.SuccessMessage = "All Required Field !";
-                }
+                
                 return View("AddorEdit", new Login());
             }
             catch (Exception ex)

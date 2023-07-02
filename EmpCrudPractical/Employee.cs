@@ -23,7 +23,6 @@ namespace EmpCrudPractical
         public System.DateTime Birthdate { get; set; }
         [Required]
         public string Gender { get; set; }
-        [Required]
         public string Education { get; set; }
         [Required]
         public string Email { get; set; }

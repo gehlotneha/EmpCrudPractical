@@ -49,7 +49,7 @@ namespace EmpCrudPractical.Controllers
             try
             {
                 var insertresult = emp.EmpCRUDSP(0, employee.Name, employee.Birthdate, employee.Gender, employee.EmpEducation[0].ToString(), employee.Email, employee.Mobile, employee.Languages, employee.Remarks, "Insert").ToList();
-                ViewBag.SuccessMessage = "Employee Save Successfull !";
+                TempData["SuccessMessage"] = "Record added successfully.";
                 return View("Create");
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace EmpCrudPractical.Controllers
             try
             {
                 var updaterecord = emp.EmpCRUDSP(employee.Id, employee.Name, employee.Birthdate, employee.Gender, employee.Education.ToString(), employee.Email, employee.Mobile, employee.Languages, employee.Remarks, "Update").ToList();
-                ViewBag.SuccessMessage = "Employee Update Successfull !";
+                TempData["SuccessMessage"] = "Record Update successfully.";
                 return View("Edit");
             }
             catch (Exception ex)

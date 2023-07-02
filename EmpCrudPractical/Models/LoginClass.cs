@@ -9,10 +9,10 @@ namespace EmpCrudPractical.Models
     public class LoginClass
     {
         [Required(ErrorMessage ="Please Enter Your Username")]
-        [Display(Name ="Enter Email :")]
+        [Display(Name ="Email :")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Please Enter Your Password")]
-        [Display(Name = "Enter Password :")]
+        [Display(Name = "Password :")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

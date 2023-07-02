@@ -3,44 +3,60 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<link href="~/Content/loginstyle.css" rel="stylesheet" />
 
-@using (Html.BeginForm())
-{
-        @Html.AntiForgeryToken()
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img style="width: 433px;margin-bottom: -248px;" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="margin-left: 599px;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Login</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "control-label" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "control-label" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Login" class="btn btn-success" />
+
+                    <div class="form-horizontal" style="margin-left: -109px; margin-top: 60px;">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Login" class="btn btn-success" />
+                                <a href="@Url.Action("AddorEdit", "User")" class="btn btn-info">Sign In?</a>
+                            </div>
+                        </div>
+
+                        <h1>@Html.ViewData["Message"]</h1>
+                    </div>
+                }
+            </div>
         </div>
     </div>
     
-    <h1>@Html.ViewData["Message"]</h1>
-</div>
-}
+</section>
 
-<div>
-    @Html.ActionLink("Go To SignIn User","AddorEdit","User")
-</div>
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }
+

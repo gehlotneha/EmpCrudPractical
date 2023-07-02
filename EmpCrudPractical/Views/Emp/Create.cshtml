@@ -3,9 +3,11 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<br/>
+<br/>
 
-<div style="margin-left: 700px;margin-top:-33px;">
+
+<div style="margin-left: 700px;">
     @Html.ActionLink("Back to List", "Index")
 </div>
 
@@ -14,96 +16,82 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Employee</h4>
+    <h4 style="margin-top: -20px;">Create Employee</h4>
     <hr />
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-2">
-            <label class="label-success">@ViewBag.SuccessMessage</label>
-        </div>
-    </div>
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Birthdate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "Birthday" } })
-            @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.RadioButtonFor(model => model.Gender, "Male")
-            Male
-            @Html.RadioButtonFor(model => model.Gender, "Female")
-            Female
-            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Education, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })*@
-            @Html.DropDownListFor(model => model.EmpEducation,
-        new SelectList(Enum.GetValues(typeof(Educations))), "Select Education")
-            @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @id = "Mobile", maxlength = "10", pattern = "[0-9]{10}" } })
-            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     @*<div class="form-group">
-            @Html.LabelFor(model => model.Languages, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.Languages, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Languages, "", new { @class = "text-danger" })
+            <div class="col-md-offset-2 col-md-2">
+                <label class="label-success">@ViewBag.SuccessMessage</label>
             </div>
         </div>*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.Languages, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="checkbox">
-            @foreach (var language in Enum.GetValues(typeof(Language)))
-            {
-                <label>
-                    <input type="checkbox" name="Languages" value="@language" />
-                    @language.ToString()
-                </label>
-            }
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Name</label>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Birthday</label>
+                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control", @type = "date", @id = "Birthday" } })
+                @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputState">Mobile</label>
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @id = "Mobile", maxlength = "10", pattern = "[0-9]{10}" } })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputCity">Email</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress2">Education</label>
+                @Html.DropDownListFor(model => model.EmpEducation,
+                new SelectList(Enum.GetValues(typeof(Educations))), "Select Education", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputZip">Remarks</label>
+                @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", rows = "1" })
+
+                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputZip">Language</label>
+                <div class="checkbox">
+                    @foreach (var language in Enum.GetValues(typeof(Language)))
+                    {
+                        <label>
+                            <input type="checkbox" name="Languages" value="@language" />
+                            @language.ToString()
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Gender</label>
+                @Html.RadioButtonFor(model => model.Gender, "Male")
+                Male
+                @Html.RadioButtonFor(model => model.Gender, "Female")
+                Female
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+
+
+
+        </div>
+    </form>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-10" style="margin-left:0px;">
             <input type="submit" value="Create" class="btn btn-success" />
         </div>
     </div>
@@ -111,9 +99,7 @@
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 <script>
     $(document).ready(function () {
         // Apply datepicker to the input field
