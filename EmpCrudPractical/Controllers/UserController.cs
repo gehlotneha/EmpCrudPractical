@@ -29,9 +29,8 @@ namespace EmpCrudPractical.Controllers
                         db.SaveChanges();
                     }
                     ModelState.Clear();
-                    ViewBag.SuccessMessage = "Registration Successfull !";
+                    TempData["SuccessMessage"] = "Registration Successfull !";
                 }
-                
                 return View("AddorEdit", new Login());
             }
             catch (Exception ex)
